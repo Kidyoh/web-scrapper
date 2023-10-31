@@ -4,7 +4,7 @@ from datetime import datetime
 app = Flask(__name__)
 
 current_datetime = datetime.now()
-formatted_date = current_datetime.strftime("%Y-%m-%d_%H-%M-%S")
+formatted_date = current_datetime.strftime("%Y-%m-%d")
 
 
 

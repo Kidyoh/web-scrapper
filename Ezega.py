@@ -6,7 +6,7 @@ from datetime import datetime
 
 def save_data_to_json(data, source):
     current_datetime = datetime.now()
-    formatted_date = current_datetime.strftime("%Y-%m-%d_%H-%M-%S")
+    formatted_date = current_datetime.strftime("%Y-%m-%d")
     json_filename = f'scraped_data_{source}_{formatted_date}.json'
 
     try:

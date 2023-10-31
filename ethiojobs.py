@@ -6,7 +6,7 @@ from datetime import datetime
 
 def save_data_to_json(data):
     current_datetime = datetime.now()
-    formatted_date = current_datetime.strftime("%Y-%m-%d_%H-%M-%S")
+    formatted_date = current_datetime.strftime("%Y-%m-%d")
     json_filename = f'scraped_data_ethiojobs_{formatted_date}.json'
 
     try:
@@ -22,16 +22,6 @@ def save_data_to_json(data):
     with open(json_filename, 'w') as json_file:
         json.dump(existing_data, json_file, indent=4)
 
-def delete_old_json_files():
-    current_datetime = datetime.now()
-    current_date = current_datetime.strftime("%Y-%m-%d")
-    files = os.listdir()
-
-    for file in files:
-        if file.startswith('scraped_data_ethiojobs_') and file.endswith('.json'):
-            date_in_filename = file.split('_')[3].split('.')[0]
-            if date_in_filename != current_date:
-                os.remove(file)
 
 def get_number_of_jobs():
     url = "https://www.ethiojobs.net/search-results-jobs/?searchId=1698308799.1268&action=search&listings_per_page=100&view=list"
@@ -48,7 +38,6 @@ def get_number_of_jobs():
     return 500
 
 def scrape_ethioJobs():
-    delete_old_json_files()
     number_of_jobs = get_number_of_jobs()
 
     url = f"https://www.ethiojobs.net/search-results-jobs/?searchId=1698308799.1268&action=search&listings_per_page={number_of_jobs}&view=list"
