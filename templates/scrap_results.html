@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Scraped Data</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            background-color: #007BFF;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+        p {
+            margin: 10px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 10px;
+            border: 1px solid #ccc;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border: 1px solid #ccc;
+        }
+        th {
+            background-color: #007BFF;
+            color: #fff;
+        }
+        a {
+            display: inline-block;
+            border-radius: 12px;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: #fff;
+            text-decoration: none;
+            margin: 10px;
+        }
+        a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Scraped Data</h1>
+    <p>URL: {{ url }}</p>
+    
+    <!-- Display the scraped HTML content in a table -->
+    <table>
+        <thead>
+            <tr>
+                <th>Tag</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for tag in tags %}
+                <tr>
+                    <td>{{ tag.name }}</td>
+                    <td>{{ tag.text }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <p>Download Data:</p>
+    <a href="/download/excel?url={{ url }}">Download as Excel</a>
+    <a href="/download/csv?url={{ url }}">Download as CSV</a>
+    
+</body>
+</html>
